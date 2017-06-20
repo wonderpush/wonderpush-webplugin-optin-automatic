@@ -1,0 +1,41 @@
+{
+  "name": "wonderpush-webplugin-optin-automatic",
+  "version": "1.0.0",
+  "description": "WonderPush Web SDK plugin to automatically present the user a prompt for push permission with a configurable trigger.",
+  "main": "src/optin-automatic.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wonderpush/wonderpush-webplugin-optin-automatic.git"
+  },
+  "keywords": [
+    "wonderpush",
+    "web",
+    "plugin",
+    "optin",
+    "automatic"
+  ],
+  "author": "WonderPush",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/wonderpush/wonderpush-webplugin-optin-automatic/issues"
+  },
+  "homepage": "https://github.com/wonderpush/wonderpush-webplugin-optin-automatic#readme",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.4.2",
+    "gulp-copy": "^1.0.0",
+    "gulp-git": "^2.4.1",
+    "gulp-header": "^1.8.8",
+    "gulp-jsdoc3": "^1.0.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-less": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-stylelint": "^3.9.0",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.4",
+    "lazypipe": "^1.0.1",
+    "q": "^1.5.0"
+  }
+}
