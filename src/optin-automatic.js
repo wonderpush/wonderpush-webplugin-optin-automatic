@@ -20,8 +20,13 @@
  * @see {@link https://wonderpush.github.io/wonderpush-javascript-sdk/latest/WonderPushPluginSDK.html#.TriggersConfig|WonderPush JavaScript Plugin SDK triggers configuration reference}
  */
 WonderPush.registerPlugin('optin-automatic', function OptinAutomatic(WonderPushSDK, options) {
-  WonderPushSDK.checkTriggers(options.triggers, function() {
-    // Trigger registration
-    WonderPushSDK.setNotificationEnabled(true);
-  });
+  if (WonderPushSDK.waitTriggers) { // WonderPush SDK 1.1.18.0 or above
+    WonderPushSDK.waitTriggers(options.triggers).then(function() {
+      WonderPushSDK.setNotificationEnabled(true);
+    });
+  } else {
+    WonderPushSDK.checkTriggers(options.triggers, function() {
+      WonderPushSDK.setNotificationEnabled(true);
+    });
+  }
 });
