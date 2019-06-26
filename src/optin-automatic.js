@@ -22,11 +22,11 @@
 WonderPush.registerPlugin('optin-automatic', function OptinAutomatic(WonderPushSDK, options) {
   if (WonderPushSDK.waitTriggers) { // WonderPush SDK 1.1.18.0 or above
     WonderPushSDK.waitTriggers(options.triggers).then(function() {
-      WonderPushSDK.setNotificationEnabled(true);
+      WonderPushSDK.subscribeToNotifications();
     });
   } else {
     WonderPushSDK.checkTriggers(options.triggers, function() {
-      WonderPushSDK.setNotificationEnabled(true);
+      WonderPushSDK.subscribeToNotifications();
     });
   }
 });
