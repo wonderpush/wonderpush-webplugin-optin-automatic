@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/wonderpush/wonderpush-webplugin-optin-automatic#readme",
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
     "gulp-clean-css": "^3.4.2",
     "gulp-copy": "^1.0.0",
     "gulp-git": "^2.4.1",

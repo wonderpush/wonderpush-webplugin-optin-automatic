@@ -18,10 +18,12 @@ let header = require('gulp-header');
 let jsdoc = require('gulp-jsdoc3');
 let git = require('gulp-git');
 let copy = require('gulp-copy');
+let babel = require('gulp-babel');
 
 const PLUGIN_NAME = pkg.main.replace(/^.*\/([^\.]*)\..*$/, '$1');
 
 const DIST_DIR = './dist';
+const BUILD_DIR = './build';
 const DOC_DIR = './doc';
 const DOC_PUBLISH_DIR = './.gh-pages.git';
 const MAIN_PLUGIN_CLASS = PLUGIN_NAME.replace(/\w[^\s-]*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}).replace('-', ''); // foo-bar becomes FooBar
@@ -58,7 +60,7 @@ let processCSS = lazypipe()
 gulp.task('default', ['clean', 'build', 'doc'], function() {
 });
 
-gulp.task('build', ['minify-js', 'minify-css', 'minify-less', 'minify-sass', 'copy-res'], function() {
+gulp.task('build', ['minify-js', 'dist-css', 'minify-less', 'minify-sass', 'copy-res'], function() {
 });
 
 gulp.task('watch', ['watch-js', 'watch-css', 'watch-less', 'watch-sass'], function() {
@@ -84,7 +86,7 @@ gulp.task('doc', function(cb) {
 });
 
 gulp.task('clean', function() {
-    return del([DIST_DIR, DOC_DIR]);
+    return del([DIST_DIR, DOC_DIR, BUILD_DIR]);
 });
 
 gulp.task('copy-res', function() {
@@ -92,12 +94,37 @@ gulp.task('copy-res', function() {
         .pipe(gulp.dest(DIST_DIR));
 });
 
-gulp.task('minify-js', function() {
+gulp.task('minify-js', ['minify-css'], function() {
     return gulp.src(JS_GLOB)
         .pipe(jshint())
         .pipe(jshint.reporter())
         .pipe(jshint.reporter('fail'))
         .pipe(sourcemaps.init())
+        .pipe(babel({
+          plugins: [
+            function ({types: t}) {
+              return {
+                visitor: {
+                  CallExpression(path) {
+                    if (t.isMemberExpression(path.node.callee)
+                      && t.isIdentifier(path.node.callee.object, {name: 'WonderPushSDK'})
+                      && t.isIdentifier(path.node.callee.property, {name: 'loadStylesheet'})
+                      && path.node.arguments.every(arg => t.isStringLiteral(arg))) {
+                      const inputContents = path.node.arguments.map(arg => fs.readFileSync(`${ BUILD_DIR }/${ arg.value }`));
+                      const replacementSource = `(function() {
+                                        var tag = document.createElement('style');
+                                        tag.type = 'text/css';
+                                        tag.appendChild(document.createTextNode(${ JSON.stringify(inputContents.join('')) }));
+                                        document.head.appendChild(tag);
+                                      })()`;
+                      path.replaceWithSourceString(replacementSource);
+                    }
+                  },
+                },
+              };
+            },
+          ],
+        }))
         .pipe(uglify())
         .pipe(addHeader())
         .pipe(sourcemaps.write('./'))
@@ -109,6 +136,12 @@ gulp.task('watch-js', function() {
 });
 
 gulp.task('minify-css', function() {
+  return gulp.src(CSS_GLOB)
+    .pipe(processCSS())
+    .pipe(gulp.dest(BUILD_DIR));
+});
+
+gulp.task('dist-css', function() {
     return gulp.src(CSS_GLOB)
         .pipe(lintCSS())
         .pipe(sourcemaps.init())
@@ -118,7 +151,7 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('watch-css', function() {
-    return gulp.watch(CSS_GLOB, ['minify-css']);
+    return gulp.watch(CSS_GLOB, ['dist-css']);
 });
 
 gulp.task('minify-less', function() {
