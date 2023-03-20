@@ -1,0 +1,188 @@
+#wp-slidedown-container.wp-slide-up {
+    bottom: 0;
+}
+
+#wp-slidedown-container.wp-slide-up #wp-slidedown-dialog {
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+    width: 100%;
+    -webkit-animation-name: wpSlideUpEnter;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 400ms;
+    -webkit-animation-fill-mode: backwards;
+    animation-name: wpSlideUpEnter;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 400ms;
+    animation-fill-mode: backwards;
+}
+
+#wp-slidedown-container.wp-slide-up.wp-close-slidedown #wp-slidedown-dialog {
+    -webkit-animation-name: wpSlideUpExit;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 400ms;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: wpSlideUpExit;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+}
+
+#wp-slidedown-container {
+    font-size: 16px;
+    position: fixed;
+    z-index: 2258594000;
+    left: 0;
+    right: 0;
+    -webkit-font-smoothing: initial;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 1px 6px rgba(5, 27, 44, 0.06), 0 2px 32px rgba(5, 27, 44, 0.16) !important;
+    background: white !important;
+    color: #051b2c;
+    padding: 1.5em 1.5em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Seoe UI Symbol";
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-body-icon {
+    box-sizing: border-box;
+    float: left;
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-body-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-body-message {
+    box-sizing: border-box;
+    padding: 0 0 0 1em;
+    font-weight: 400;
+    float: left;
+    width: calc(100% - 80px);
+    line-height: 1.45em;
+    -o-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    color: #051B2C !important;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog button {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: .375rem 1rem;
+    font-size: 0.9625em;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+    transition: background-color 75ms ease;
+    margin: 0;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-primary {
+    background: #0078D1;
+    color: white !important;
+    transition: linear 75ms;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-primary:hover {
+    background: #0062ab;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-primary:active {
+    background: #004c85;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-primary.disabled {
+    background-color: #CED3D8;
+    cursor: default;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-secondary {
+    box-shadow: none;
+    background: white !important;
+    /*
+      We sparingly use an !important tag here because it's important for the user to be able to click "No Thanks".
+      Some sites set their own !important tag for text and we don't want that to be able to override ours.
+     */
+    color: #0078D1 !important;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-secondary:hover {
+    color: #005391;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-secondary:active {
+    color: #001f35;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-primary.wp-slidedown-button + .wp-secondary.wp-slidedown-button {
+    margin-right: 0.714em;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-align-right {
+    float: right;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-clearfix {
+    display: block;
+    -webkit-backface-visibility: initial !important;
+    backface-visibility: initial !important;
+}
+
+#wp-slidedown-container #wp-slidedown-dialog .wp-clearfix:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+@keyframes wpSlideUpEnter {
+    0% {
+        transform: translateY(150%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes wpSlideUpExit {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(150%);
+    }
+}
