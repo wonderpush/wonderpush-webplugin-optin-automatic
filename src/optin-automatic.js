@@ -53,40 +53,40 @@ WonderPush.registerPlugin('optin-automatic',
     }
     var translations = {
       "fr": {
-        "We'd like to show you notifications for the latest news and updates.": "Nous aimerions vous montrer des notifications pour les dernières nouvelles et mises à jour.",
-        "Cancel": "Annuler",
-        "Allow": "Permettre",
+        "We'd like to show you notifications for the latest news and updates.": "Recevoir les notifications pour être tenu informé des dernières nouveautés.",
+        "Cancel": "Refuser",
+        "Allow": "Accepter",
       },
-      "es": {
-        "We'd like to show you notifications for the latest news and updates.": "Nos gustaría mostrarle notificaciones de las últimas noticias y actualizaciones.",
-        "Cancel": "Cancelar",
-        "Allow": "Permitir",
-      },
-      "it": {
-        "We'd like to show you notifications for the latest news and updates.": "Vorremmo mostrarti le notifiche per le ultime notizie e gli aggiornamenti.",
-        "Cancel": "Annulla",
-        "Allow": "Permettere",
-      },
-      "de": {
-        "We'd like to show you notifications for the latest news and updates.": "Wir möchten Ihnen Benachrichtigungen für die neuesten Nachrichten und Updates anzeigen.",
-        "Cancel": "Stornieren",
-        "Allow": "Erlauben",
-      },
-      "pt": {
-        "We'd like to show you notifications for the latest news and updates.": "Gostaríamos de mostrar notificações para as últimas notícias e atualizações.",
-        "Cancel": "Cancelar",
-        "Allow": "Permitir",
-      },
-      "nl": {
-        "We'd like to show you notifications for the latest news and updates.": "We willen je graag meldingen laten zien voor het laatste nieuws en updates.",
-        "Cancel": "Annuleren",
-        "Allow": "Toestaan",
-      },
-      "pl": {
-        "We'd like to show you notifications for the latest news and updates.": "Chcielibyśmy wyświetlać powiadomienia o najnowszych wiadomościach i aktualizacjach.",
-        "Cancel": "Anulować",
-        "Allow": "Umożliwić",
-      },
+      // "es": {
+      //   "We'd like to show you notifications for the latest news and updates.": "Recibir notificaciones de las últimas novedades.",
+      //   "Cancel": "Cancelar",
+      //   "Allow": "Permitir",
+      // },
+      // "it": {
+      //   "We'd like to show you notifications for the latest news and updates.": "Vorremmo mostrarti le notifiche per le ultime notizie e gli aggiornamenti.",
+      //   "Cancel": "Annulla",
+      //   "Allow": "Permettere",
+      // },
+      // "de": {
+      //   "We'd like to show you notifications for the latest news and updates.": "Wir möchten Ihnen Benachrichtigungen für die neuesten Nachrichten und Updates anzeigen.",
+      //   "Cancel": "Stornieren",
+      //   "Allow": "Erlauben",
+      // },
+      // "pt": {
+      //   "We'd like to show you notifications for the latest news and updates.": "Gostaríamos de mostrar notificações para as últimas notícias e atualizações.",
+      //   "Cancel": "Cancelar",
+      //   "Allow": "Permitir",
+      // },
+      // "nl": {
+      //   "We'd like to show you notifications for the latest news and updates.": "We willen je graag meldingen laten zien voor het laatste nieuws en updates.",
+      //   "Cancel": "Annuleren",
+      //   "Allow": "Toestaan",
+      // },
+      // "pl": {
+      //   "We'd like to show you notifications for the latest news and updates.": "Chcielibyśmy wyświetlać powiadomienia o najnowszych wiadomościach i aktualizacjach.",
+      //   "Cancel": "Anulować",
+      //   "Allow": "Umożliwić",
+      // },
     };
     var locales = WonderPushSDK.getLocales ? WonderPushSDK.getLocales() || [] : [];
     var language = locales.map(function(x) { return x.split(/[-_]/)[0]; })[0] || (navigator.language || '').split('-')[0];
