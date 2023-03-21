@@ -100,7 +100,7 @@ WonderPush.registerPlugin('optin-automatic',
       return text;
     };
     var container = document.createElement('div');
-    container.className = 'wp-slidedown-container wp-slide-up';
+    container.className = 'wp-slidedown-container ' + (window.matchMedia('only screen and (min-width : 600px)').matches ? 'wp-slide-down' : 'wp-slide-up');
     container.id = 'wp-slidedown-container';
     container.innerHTML = '<div id="wp-slidedown-dialog" class="wp-slidedown-dialog"><div><div class="wp-slidedown-body" id="wp-slidedown-body"><div class="wp-slidedown-body-icon"></div><div class="wp-slidedown-body-message"></div><div class="wp-clearfix"></div></div><div class="wp-slidedown-footer" id="wp-slidedown-footer"><button class="wp-align-right wp-primary wp-slidedown-button" id="wp-slidedown-allow-button"></button><button class="wp-align-right wp-secondary wp-slidedown-button" id="wp-slidedown-cancel-button"></button><div class="wp-clearfix"></div></div></div></div>';
     var dismiss = function() {

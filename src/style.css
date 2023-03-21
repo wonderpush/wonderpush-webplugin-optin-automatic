@@ -2,6 +2,27 @@
     bottom: 0;
 }
 
+#wp-slidedown-container.wp-slide-down {
+    top: 0;
+    bottom: unset;
+}
+
+#wp-slidedown-container.wp-slide-down #wp-slidedown-dialog {
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+    width: 500px;
+    -webkit-animation-name: wpSlideDownEnter;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 400ms;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: wpSlideDownEnter;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+}
+
 #wp-slidedown-container.wp-slide-up #wp-slidedown-dialog {
     border-bottom-left-radius: unset;
     border-bottom-right-radius: unset;
@@ -16,6 +37,19 @@
     animation-timing-function: ease-out;
     animation-duration: 400ms;
     animation-fill-mode: backwards;
+}
+
+#wp-slidedown-container.wp-slide-down.wp-close-slidedown #wp-slidedown-dialog {
+    -webkit-animation-name: wpSlideDownExit;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-duration: 400ms;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: wpSlideDownExit;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
 }
 
 #wp-slidedown-container.wp-slide-up.wp-close-slidedown #wp-slidedown-dialog {
@@ -184,5 +218,23 @@
     }
     100% {
         transform: translateY(150%);
+    }
+}
+
+@keyframes wpSlideDownEnter {
+    0% {
+        transform: translateY(-150%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes wpSlideDownExit {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-150%);
     }
 }
