@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+<body style="background: transparent;">
+    <script src="scripts/docstrap.lib.js"></script>
+    <script src="scripts/lunr.min.js"></script>
+    <script src="scripts/fulltext-search.js"></script>
+
+    <script type="text/x-docstrap-searchdb">
+    {"classes.list.html":{"id":"classes.list.html","title":"Classes","body":" optin-automatic Classes OptinAutomatic Externals WonderPushPluginSDK Classes Classes OptinAutomatic × Search results Close "},"externals.list.html":{"id":"externals.list.html","title":"Externals","body":" optin-automatic Classes OptinAutomatic Externals WonderPushPluginSDK Externals Classes OptinAutomatic × Search results Close "},"index.html":{"id":"index.html","title":"Index","body":" optin-automatic Classes OptinAutomatic Externals WonderPushPluginSDK wonderpush-webplugin-optin-automatic 1.0.4 WonderPush Web SDK plugin to automatically present the user a prompt for push permission with a configurable trigger. The browser push permission prompt will be shown without any previous message. You should probably prefer using the optin-dialog plugin instead of this one. Note that this plugin may not work properly if the user is not browsing directly on your own custom domain. See: Chrome Platform Status – Remove Usage of Notifications from iFrames (deprecated). How to use this plugin From the WonderPush dashboard Log in to your WonderPush dashboard and head over to the Settings / Configuration page in the left menu. Select the Website tab and use this plugin. From the initialization options of the SDK Change your call to WonderPush.init() to include the following, merging existing keys as necessary: WonderPush.init({ plugins: { \"optin-automatic\": { \"triggers\": { // Configure the triggers as desired }, }, }, }); You can find the reference of the options in the OptinAutomatic.Options section of the reference. Reference The available options are described in the OptinAutomatic.Options section of the reference. The available API is described on the OptinAutomatic class. × Search results Close "},"external-WonderPushPluginSDK.html":{"id":"external-WonderPushPluginSDK.html","title":"External: WonderPushPluginSDK","body":" optin-automatic Classes OptinAutomatic Externals WonderPushPluginSDK External: WonderPushPluginSDK WonderPushPluginSDK The WonderPush JavaScript SDK instance. See: WonderPush JavaScript Plugin SDK reference Type Definitions TriggersConfig WonderPush SDK triggers configuration. See: WonderPush JavaScript Plugin SDK triggers configuration reference × Search results Close "},"OptinAutomatic.html":{"id":"OptinAutomatic.html","title":"Class: OptinAutomatic","body":" optin-automatic Classes OptinAutomatic Externals WonderPushPluginSDK Class: OptinAutomatic OptinAutomatic new OptinAutomatic(WonderPushSDK, options) WonderPush Web SDK plugin to automatically present the user a prompt for push permission with a configurable trigger. Parameters: Name Type Description WonderPushSDK external:WonderPushPluginSDK The WonderPush SDK instance provided automatically on intanciation. options OptinAutomatic.Options The plugin options. Type Definitions Options Type: Object Properties: Name Type Argument Description triggers external:WonderPushPluginSDK.TriggersConfig &lt;optional&gt; The triggers configuration for this plugin. message string &lt;optional&gt; The dialog message. positiveButton string &lt;optional&gt; The dialog positive button message. negativeButton string &lt;optional&gt; The dialog negative button message. icon string &lt;optional&gt; The dialog icon URL. Defaults to the default notification icon configured in the project. × Search results Close "}}
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Searcher.init();
+        });
+
+        $(window).on("message", function(msg) {
+            var msgData = msg.originalEvent.data;
+
+            if (msgData.msgid != "docstrap.quicksearch.start") {
+                return;
+            }
+
+            var results = Searcher.search(msgData.searchTerms);
+
+            window.parent.postMessage({"results": results, "msgid": "docstrap.quicksearch.done"}, "*");
+        });
+    </script>
+</body>
+</html>
