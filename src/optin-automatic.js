@@ -141,6 +141,11 @@ WonderPush.registerPlugin('optin-automatic',
         WonderPushSDK.subscribeToNotifications().catch(catchRegistrationErrors);
       });
     }
-    document.body.appendChild(container);
+    var append = function() { document.body.appendChild(container); };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', append);
+    } else {
+      append();
+    }
   });
 });
