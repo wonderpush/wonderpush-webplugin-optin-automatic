@@ -7,6 +7,7 @@
 /**
  * @typedef {Object} OptinAutomatic.Options
  * @property {external:WonderPushPluginSDK.TriggersConfig} [triggers] - The triggers configuration for this plugin.
+ * @property {boolean} [noDialog] - When true, we'll never display an HTML dialog before the native permission prompt.
  * @property {string} [message] - The dialog message.
  * @property {string} [positiveButton] - The dialog positive button message.
  * @property {string} [negativeButton] - The dialog negative button message.
@@ -28,6 +29,8 @@ WonderPush.registerPlugin('optin-automatic',
    * @param {OptinAutomatic.Options} options
    */
   function OptinAutomatic(WonderPushSDK, options) {
+  options = options || {};
+  var noDialog = !!options.noDialog;
   var catchRegistrationErrors = function(error) {
     if (error instanceof WonderPush.Errors.UserCancellationError || error instanceof WonderPush.Errors.PermissionError) {
       console.warn(error);
@@ -40,7 +43,7 @@ WonderPush.registerPlugin('optin-automatic',
     WonderPushSDK.loadStylesheet('style.css');
   }
   WonderPushSDK.waitTriggers(options.triggers).then(function() {
-    if (!isMobile) {
+    if (noDialog || !isMobile) {
       WonderPushSDK.subscribeToNotifications().catch(catchRegistrationErrors);
       return;
     }
