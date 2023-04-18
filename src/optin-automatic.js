@@ -38,7 +38,12 @@ WonderPush.registerPlugin('optin-automatic',
     }
     console.error(error);
   };
+
   var isMobile = navigator.userAgent.startsWith('Mozilla/5.0 (Linux; Android');
+  var detectedBrowser = typeof WonderPushSDK.detectBrowser !== 'undefined' ? WonderPushSDK.detectBrowser() : {};
+  if (options.triggers) {
+    options.triggers.waitForUserActivation = detectedBrowser.name === 'Safari';
+  }
   if (isMobile) {
     WonderPushSDK.loadStylesheet('style.css');
   }
