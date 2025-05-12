@@ -145,21 +145,21 @@
 }
 
 #wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-primary {
-    background: #0078D1;
+    background: #0078D1 !important;
     color: white !important;
     transition: linear 75ms;
 }
 
 #wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-primary:hover {
-    background: #0062ab;
+    background: #0062ab !important;
 }
 
 #wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-primary:active {
-    background: #004c85;
+    background: #004c85 !important;
 }
 
 #wp-slidedown-container #wp-slidedown-dialog .wp-slidedown-button.wp-primary.disabled {
-    background-color: #CED3D8;
+    background-color: #CED3D8 !important;
     cursor: default;
 }
 
